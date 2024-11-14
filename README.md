@@ -4,7 +4,7 @@ The objective of our project is to lead a metrological study over the website we
 
 ## I - Basic ping, where is the weather.com server?
 
-Let us start by sending basic ping instructions to the weather.com server to observe elementary information. The associated IP address is either 23.217.186.82 if launched from the campus (Eduroam) or 2a02:26f0:b80:784::2e03 if launched from our apartments in Villeurbanne (Bouygues’s and SFR’s Wi-Fi). The IP Address Lookup website reveals that the IPv4 address is in Paris and the IPv6 address is in Marseille. However, this is a local approach. Testing elsewhere in France could yield different results. Weather.com is owned by The Weather Company, an American corporation, but the servers are in France because they belong to Akamai Technologies. Akamai is an American company that provides Content Delivery Network (CDN), cybersecurity, DDoS mitigation, and cloud services.
+Let us start by sending basic ping instructions to the weather.com server to observe elementary information. The associated IP address is either **23.217.186.82** if launched from the campus (Eduroam) or **2a02:26f0:b80:784::2e03** if launched from our apartments in Villeurbanne (Bouygues’s and SFR’s Wi-Fi). The IP Address Lookup website reveals that the IPv4 address is in Paris and the IPv6 address is in Marseille. However, this is a local approach. Testing elsewhere in France could yield different results. Weather.com is owned by The Weather Company, an American corporation, but the servers are in France because they belong to Akamai Technologies. Akamai is an American company that provides Content Delivery Network (CDN), cybersecurity, DDoS mitigation, and cloud services.
 
 A CDN involves the original server (weather.com in America) and edge servers (belonging to Akamai and perhaps others) deployed in multiple locations, where content is replicated. The advantages of using a CDN include improving load times, enhancing security, and ensuring high availability by delivering content from servers closest to users. In our case, it might also be for personalizing data; for example, the server in Paris may only hold meteorological data for France and nearby countries. The caching policy used in this contract is also in question. Is it a pull CDN? Push CDN? Cache purging? Further tests may help us determine this.
 
@@ -19,7 +19,7 @@ We expected to see more congestion in the early morning or the late evening. The
 
 ### III - Impact of the mean of connection
 
-During this part we will focus on the impacts of the means of connection. To do so, we sent 100 pings to the website every hour the 12/11/2024 between 14 and 18 with 4 means of connection: Ethernet, Wi-Fi, 5G and 4G. The graph below represents the means RTT (in ms) for each demand. The command line used was in the form of ping weather.com -n 100 > "name of the file”.
+During this part we will focus on the impacts of the means of connection. To do so, we sent 100 pings to the website every hour the 12/11/2024 between 14 and 18 with 4 means of connection: Ethernet, Wi-Fi, 5G and 4G. The graph below represents the means RTT (in ms) for each demand. The command line used was in the form of **ping weather.com -n 100 > "name of the file”**.
 
 ![Latency/RTT evolution between 14h and 18h the 12/11/2024 with 4 means of connection](https://github.com/Kactus29/MET_Project/blob/8fa4066d191ce9f88b89791aa89a985350b70b98/MET%20pictures/latency_image.png)
 Figure 2: Latency/RTT evolution between 14h and 18h the 12/11/2024 with 4 means of connection
@@ -34,7 +34,7 @@ Figures 3-4: Paths from physical laptop to CDN (left) & from virtual machines to
 
 First, we first tried to map the network paths between our laptops (connected with either Eduroam, 4G or personal Wi-fi) and the Ankamai CDN, located in Marseille. The first problem we encountered was the difficulty dealing with the protection against the ICMP requests of a usual traceroute: even pathping, super traceroute and all the other tools we found on Ubuntu by wsl were blocked.
 
-Then, we switched to plenty of solutions using TCP or UDP instead of ICMP, as tcp traceroute, mtr on wsl and nmap on Zenmap (cf. Fig.3, cmd. nmap -sS -Pn --traceroute www.weather.com ). Finally, we were not able to obtain any data (address & location) about the key points in the topography (cf. “web” Fig.3), but we got a great vision of the whole path with Zenmap.
+Then, we switched to plenty of solutions using TCP or UDP instead of ICMP, as tcp traceroute, mtr on wsl and nmap on Zenmap (cf. Fig.3, **cmd. nmap -sS -Pn --traceroute www.weather.com** ). Finally, we were not able to obtain any data (address & location) about the key points in the topography (cf. “web” Fig.3), but we got a great vision of the whole path with Zenmap.
 
 As it was impossible for us to travel nor obtain data about exchanges between physical machines in foreign countries and the server of the website, in the last part of our project we used ping.pe to simulate mtr from various locations all over the world. Analyzing the collected traceroute data, we observed a set of consistent “pathways” through the network that represent regional or ISP-based interconnection bands. These nodes act as critical points where traffic is routed between major network infrastructures.
 
