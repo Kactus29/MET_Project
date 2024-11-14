@@ -10,7 +10,7 @@ A CDN involves the original server (weather.com in America) and edge servers (be
 
 ## II - Seasonality
 
-[RTT evolution during the day](MET pictures/rtt_image.png)
+![MET pictures/rtt_image.png](https://github.com/Kactus29/MET_Project/blob/961e70bea22e5b2eea6952367f9e6b7d5d966d4c/MET%20pictures/rtt_image.png)
 Figure 1: RTT evolution during the day of 10/11/2024
 
 Now that we know where the packets are sent, let’s focus on the time they take to travel. We coded a python script to send a ping request to the website every 20 minutes for 24 hours. We used Bouygues's Wi-Fi (with fiber).  All the packets we looked at during the measurement have been routed to the server in Marseille. So, let’s assume they all went there. Any small spikes could represent either a connection problem on my Wi-Fi or small congestion in the network. The large peak could represent a very large congestion or a sending to the original server in the United States, the order of magnitude of the RTT time corresponds. Both explanations are possible.
