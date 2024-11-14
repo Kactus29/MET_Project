@@ -1,5 +1,4 @@
-# MET_Project
-Network Metrology Project
+# Network Metrology Project
 
 The objective of our project is to lead a metrological study over the website weather.com, known worldwide with a high attendance and a major social impact. We will mainly focus on the 3rd and 4th layers (network and transport). Firstly, we will look at a few basic ping instructions, which will lead us to the concept of CDN. Then, we will approach seasonality and the impact of the means of connection. Finally, we will be interested in the routes that the packets take to reach the server. All the scripts and data files are available on our GitHub repository. During the experiments, we used different kinds of means of connections: Wi-Fi, Ethernet, 4G and 5G on our two laptops.
 
