@@ -17,7 +17,7 @@ Now that we know where the packets are sent, let’s focus on the time they take
 
 We expected to see more congestion in the early morning or the late evening. These are the times when people watch the weather the most. But that's not really the case here in the morning. On the other hand, between 3pm and 8pm is when the spikes are concentrated, which is predictable. The measurements were taken over a 3-day weekend, a weekday might be closer to our assumptions. If this intuition proves to be correct, it would be possible to adapt the allocation of resources to the server so that more are available at peak times and less at off-peak times. Or maybe this is already implemented. It's an ecological and economic approach.
 
-### III - Impact of the mean of connection
+## III - Impact of the mean of connection
 
 During this part we will focus on the impacts of the means of connection. To do so, we sent 100 pings to the website every hour the 12/11/2024 between 14 and 18 with 4 means of connection: Ethernet, Wi-Fi, 5G and 4G. The graph below represents the means RTT (in ms) for each demand. The command line used was in the form of **ping weather.com -n 100 > "name of the file”**.
 
@@ -26,13 +26,17 @@ Figure 2: Latency/RTT evolution between 14h and 18h the 12/11/2024 with 4 means 
 
 The network latency experiment results clearly show the speed order as Ethernet, Wi-Fi, 5G, and 4G, which is predictable given the characteristics of each connection. Ethernet was the fastest and most stable with a constant 8 ms latency, but it is restrictive as it requires a fixed PC. Wi-Fi had slightly higher but stable latency around 10-11 ms, offering practical and acceptable performance for most uses. 5G and 4G showed higher and more variable latencies, with 5G ranging from 37-44 ms and 4G from 42-51 ms, likely influenced by mobile plans and location. Each connection type has its pros and cons: Ethernet offers optimal speed and stability but lacks mobility, Wi-Fi provides good performance and flexibility, while 5G and 4G offer mobility with acceptable but variable performance. The choice of connection depends on specific needs for speed, stability, and mobility.
 
-# IV – Path Evolution & Traceroute
+## IV – Path Evolution & Traceroute
 
 In this last section, we attend to represent the path of our ping packet by topography methodology. Using the traceroute command and other similar tools (pathping, Zenmap, trt online, ping.pe and mtr on wsl), we captured and compared the routing path from different locations, aiming to map common paths and identify key interconnection zones within the network infrastructure.
 
-Figures 3-4: Paths from physical laptop to CDN (left) & from virtual machines to server in USA (right)
+![Paths from physical laptop to CDN](https://github.com/Kactus29/MET_Project/blob/main/MET%20pictures/Zenmap%20vf.png)
+Figures 3: Paths from physical laptop to CDN 
 
-First, we first tried to map the network paths between our laptops (connected with either Eduroam, 4G or personal Wi-fi) and the Ankamai CDN, located in Marseille. The first problem we encountered was the difficulty dealing with the protection against the ICMP requests of a usual traceroute: even pathping, super traceroute and all the other tools we found on Ubuntu by wsl were blocked.
+![Paths from virtual machines to server in USA](https://github.com/Kactus29/MET_Project/blob/main/MET%20pictures/Mtr%20virtuel%20vf.png)
+Figure 4: Paths from virtual machines to server in USA
+
+First, we tried to map the network paths between our laptops (connected with either Eduroam, 4G or personal Wi-fi) and the Ankamai CDN, located in Marseille. The first problem we encountered was the difficulty dealing with the protection against the ICMP requests of a usual traceroute: even pathping, super traceroute and all the other tools we found on Ubuntu by wsl were blocked.
 
 Then, we switched to plenty of solutions using TCP or UDP instead of ICMP, as tcp traceroute, mtr on wsl and nmap on Zenmap (cf. Fig.3, **cmd. nmap -sS -Pn --traceroute www.weather.com** ). Finally, we were not able to obtain any data (address & location) about the key points in the topography (cf. “web” Fig.3), but we got a great vision of the whole path with Zenmap.
 
