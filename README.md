@@ -42,7 +42,7 @@ In this last section, we attend to represent the path of our ping packet by topo
 
 First, we tried to map the network paths between our laptops (connected with either Eduroam, 4G or personal Wi-fi) and the Ankamai CDN, located in Marseille. The first problem we encountered was the difficulty dealing with the protection against the ICMP requests of a usual traceroute: even pathping, super traceroute and all the other tools we found on Ubuntu by wsl were blocked.
 
-Then, we switched to plenty of solutions using TCP or UDP instead of ICMP, as tcp traceroute, mtr on wsl and nmap on Zenmap (cf. Fig.3, **cmd. nmap -sS -Pn --traceroute www.weather.com** ). Finally, we were not able to obtain any data (address & location) about the key points in the topography (cf. “web” Fig.3), but we got a great vision of the whole path with Zenmap.
+Then, we switched to plenty of solutions using TCP or UDP instead of ICMP, as tcp traceroute, mtr on wsl and nmap on Zenmap (cf. Fig.3, **cmd. nmap -sS -Pn --traceroute weather.com** ). Finally, we were not able to obtain any data (address & location) about the key points in the topography (cf. “web” Fig.3), but we got a great vision of the whole path with Zenmap.
 
 As it was impossible for us to travel nor obtain data about exchanges between physical machines in foreign countries and the server of the website, in the last part of our project we used ping.pe to simulate mtr from various locations all over the world. Analyzing the collected traceroute data, we observed a set of consistent “pathways” through the network that represent regional or ISP-based interconnection bands. These nodes act as critical points where traffic is routed between major network infrastructures.
 
